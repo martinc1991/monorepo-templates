@@ -1,5 +1,4 @@
 import { TestEndpointGETResponse } from '@packages/shared-types';
-import './App.css';
 import { useAPI } from './hooks/use-api';
 
 function App() {
@@ -9,7 +8,7 @@ function App() {
   if (isLoading || !data) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className=" w-screen h-screen flex items-center justify-center flex-col">
       <h1>Monorepo template</h1>
 
       <p>

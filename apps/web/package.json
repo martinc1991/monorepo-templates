@@ -17,6 +17,7 @@
     "swr": "^2.2.5"
   },
   "devDependencies": {
+    "@packages/shared-types": "workspace:*",
     "@types/react": "^18.3.17",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react-swc": "^3.5.0",

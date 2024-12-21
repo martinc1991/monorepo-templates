@@ -1,4 +1,4 @@
-import { ApiSuccessResponseData, SuccessResponse } from '@/types/api-response.js'; // Adjust the import path as needed
+import { ApiSuccessResponse } from '@packages/shared-types';
 import { Response } from 'express';
 import { getReasonPhrase } from 'http-status-codes';
 
@@ -9,8 +9,8 @@ import { getReasonPhrase } from 'http-status-codes';
  * @param data - Data returned by the API
  * @param status - HTTP status code
  */
-export const sendSuccessResponse = <T extends ApiSuccessResponseData>(res: Response, data: T, status: number = 200): void => {
-  const successResponse: SuccessResponse<T> = {
+export const sendSuccessResponse = <T>(res: Response, data: T, status: number = 200): void => {
+  const successResponse: ApiSuccessResponse<T> = {
     success: true,
     status,
     code: getReasonPhrase(status),

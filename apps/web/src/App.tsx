@@ -1,31 +1,25 @@
-import useSWR from 'swr';
 import './App.css';
-import { fetcher } from './lib/fetcher';
+import { useAPI } from './hooks/use-api';
 
-// DELETE:
-export interface TestData {
-  success: boolean;
-  status: number;
-  code: string;
-  timestamp: string;
-  data: {
-    message: string;
-    baseUrl: string;
-    url: string;
-  };
+interface TestData {
+  message: string;
+  baseUrl: string;
+  url: string;
 }
 
 function App() {
-  const { data, error, isLoading } = useSWR<TestData>('/test', fetcher);
+  const { data, error, isLoading } = useAPI<TestData>('/test');
 
   if (error) return <div>Error</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading || !data) return <div>Loading...</div>;
 
   return (
     <div>
       <h1>Monorepo template</h1>
 
-      <p>API is running at: {data?.data.url}</p>
+      <p>
+        API is running at: <a href={data.data.baseUrl}>{data.data.baseUrl}</a>
+      </p>
     </div>
   );
 }

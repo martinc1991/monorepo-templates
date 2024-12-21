@@ -1,4 +1,4 @@
-import { ApiErrorResponse } from '@/types/api-response.js';
+import { ApiErrorResponse } from '@packages/shared-types';
 import { Response } from 'express';
 
 /**

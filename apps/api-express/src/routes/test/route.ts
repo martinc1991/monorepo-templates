@@ -1,5 +1,6 @@
 import { apiResponse } from '@/lib/api-response/index.js';
 import { errorCatchMiddleware } from '@/middlewares/errors.js';
+import { TestEndpointGETResponse } from '@packages/shared-types';
 import { Request, Response, Router } from 'express';
 
 export const testRouter = Router();
@@ -10,6 +11,12 @@ testRouter.get(
     const baseUrl = req.protocol + '://' + req.get('host');
     const url = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
 
-    apiResponse.success(res, { message: 'API is working', baseUrl, url });
+    const response: TestEndpointGETResponse = {
+      message: 'API is working',
+      baseUrl,
+      url,
+    };
+
+    apiResponse.success(res, response);
   }),
 );

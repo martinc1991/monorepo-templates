@@ -1,14 +1,9 @@
+import { TestEndpointGETResponse } from '@packages/shared-types';
 import './App.css';
 import { useAPI } from './hooks/use-api';
 
-interface TestData {
-  message: string;
-  baseUrl: string;
-  url: string;
-}
-
 function App() {
-  const { data, error, isLoading } = useAPI<TestData>('/test');
+  const { data, error, isLoading } = useAPI<TestEndpointGETResponse>('/test');
 
   if (error) return <div>Error</div>;
   if (isLoading || !data) return <div>Loading...</div>;
